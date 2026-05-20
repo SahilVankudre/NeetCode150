@@ -1,5 +1,5 @@
 '''
-Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
+Q.1) [E] Given an integer array nums, return true if any value appears more than once in the array, otherwise return false.
 
 Example 1:
 
@@ -19,7 +19,7 @@ def hasDuplicate(self, nums: list[int]) -> bool:
         return False      
 
 '''
-Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
+Q.2) [E] Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
 
 An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
@@ -47,7 +47,7 @@ def isAnagram(self, s: str, t: str) -> bool:
         return False
 
 '''
-Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
+Q.3) [E] Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
 
 You may assume that every input has exactly one pair of indices i and j that satisfy the condition.
 
@@ -73,7 +73,7 @@ def twoSum(self, nums: list[int], target: int) -> list[int]:
         return
 
 '''
-Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
+Q.4) [M] Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
 
 An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
@@ -99,7 +99,7 @@ def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
         return list(hm.values())
 
 '''
-Given an integer array nums and an integer k, return the k most frequent elements within the array.
+Q.5) [M] Given an integer array nums and an integer k, return the k most frequent elements within the array.
 
 The test cases are generated such that the answer is always unique.
 
@@ -136,4 +136,33 @@ def topKFrequent(self, nums: list[int], k: int) -> list[int]:
         return res
 
 '''
+Q.6) [M] Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
+
+Machine 1 (sender) has the function:
+
+String encode(List<String> strs) {
+    // ... your code
+    return encoded_string;
+}
+Machine 2 (receiver) has the function:
+
+List<String> decode(String encoded_string) {
+    // ... your code
+    return decoded_strs;
+}
+So Machine 1 does:
+
+String encoded_string = encode(strs);
+and Machine 2 does:
+
+List<String> decoded_strs = decode(encoded_string);
+decoded_strs in Machine 2 should be the same as the input strs in Machine 1.
+
+Implement the encode and decode methods.
+
+Example 1:
+
+Input: strs = ["Hello","World"]
+
+Output: ["Hello","World"]
 '''
