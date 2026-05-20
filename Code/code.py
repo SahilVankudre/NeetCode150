@@ -99,4 +99,41 @@ def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
         return list(hm.values())
 
 '''
+Given an integer array nums and an integer k, return the k most frequent elements within the array.
+
+The test cases are generated such that the answer is always unique.
+
+You may return the output in any order.
+
+Example 1:
+
+Input: nums = [1,2,2,3,3,3], k = 2
+
+Output: [2,3]
+'''
+def topKFrequent(self, nums: list[int], k: int) -> list[int]:
+        hm = {}
+
+        # Frequency map
+        for num in nums:
+            hm[num] = hm.get(num,0)+1
+
+        # Creating buckets
+
+        Buckets = [[] for _ in range(len(nums)+1)]
+
+        for idx, num in hm.items():
+            Buckets[num].append(idx)
+
+        res = []
+
+        for i in range(len(Buckets)-1, -1, -1):
+            for num in Buckets[i]:
+                res.append(num)
+                if len(res) == k:
+                    return res
+
+        return res
+
+'''
 '''
