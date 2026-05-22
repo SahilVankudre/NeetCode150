@@ -8,15 +8,15 @@ Input: nums = [1, 2, 3, 3]
 Output: true
 '''
 def hasDuplicate(self, nums: list[int]) -> bool:
-        seen = {}
+    seen = {}
 
-        for i in nums:
-            seen[i] = seen.get(i, 0)+1 
+    for i in nums:
+        seen[i] = seen.get(i, 0)+1 
 
-        for j in seen:
-            if seen[j] >= 2:
-                return True
-        return False      
+    for j in seen:
+        if seen[j] >= 2:
+            return True
+    return False      
 
 '''
 Q.2) [E] Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
@@ -30,21 +30,21 @@ Input: s = "racecar", t = "carrace"
 Output: true
 '''
 def isAnagram(self, s: str, t: str) -> bool:
-        seen1, seen2 = {}, {}
+    seen1, seen2 = {}, {}
 
-        if len(s) != len(t):
-            return False
-
-        for i in s:
-            seen1[i] = seen1.get(i, 0)+1
-
-        for j in t:
-            seen2[j] = seen2.get(j, 0)+1
-
-        if seen1 == seen2:
-            return True
-        
+    if len(s) != len(t):
         return False
+
+    for i in s:
+        seen1[i] = seen1.get(i, 0)+1
+
+    for j in t:
+        seen2[j] = seen2.get(j, 0)+1
+
+    if seen1 == seen2:
+        return True
+    
+    return False
 
 '''
 Q.3) [E] Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
@@ -61,16 +61,16 @@ nums = [3,4,5,6], target = 7
 Output: [0,1]
 '''
 def twoSum(self, nums: list[int], target: int) -> list[int]:
-        seen = {}
-        
-        for i,n in enumerate(nums):
-            res = target - n
+    seen = {}
+    
+    for i,n in enumerate(nums):
+        res = target - n
 
-            if res in seen:
-                return [seen[res], i]
+        if res in seen:
+            return [seen[res], i]
 
-            seen[n] = i
-        return
+        seen[n] = i
+    return
 
 '''
 Q.4) [M] Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
@@ -85,18 +85,18 @@ Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
 '''
 def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
 
-        hm = {}
+    hm = {}
 
-        for i in strs:
+    for i in strs:
 
-            key = ''.join(sorted(i))
+        key = ''.join(sorted(i))
 
-            if key not in hm:
-                hm[key] = []
+        if key not in hm:
+            hm[key] = []
 
-            hm[key].append(i)
+        hm[key].append(i)
 
-        return list(hm.values())
+    return list(hm.values())
 
 '''
 Q.5) [M] Given an integer array nums and an integer k, return the k most frequent elements within the array.
@@ -112,28 +112,27 @@ Input: nums = [1,2,2,3,3,3], k = 2
 Output: [2,3]
 '''
 def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        hm = {}
+    hm = {}
 
-        # Frequency map
-        for num in nums:
-            hm[num] = hm.get(num,0)+1
+    # Frequency map
+    for num in nums:
+        hm[num] = hm.get(num,0)+1
 
-        # Creating buckets
+    # Creating buckets
+    Buckets = [[] for _ in range(len(nums)+1)]
 
-        Buckets = [[] for _ in range(len(nums)+1)]
+    for idx, num in hm.items():
+        Buckets[num].append(idx)
 
-        for idx, num in hm.items():
-            Buckets[num].append(idx)
+    res = []
 
-        res = []
+    for i in range(len(Buckets)-1, -1, -1):
+        for num in Buckets[i]:
+            res.append(num)
+            if len(res) == k:
+                return res
 
-        for i in range(len(Buckets)-1, -1, -1):
-            for num in Buckets[i]:
-                res.append(num)
-                if len(res) == k:
-                    return res
-
-        return res
+    return res
 
 '''
 Q.6) [M] Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
@@ -182,11 +181,11 @@ Input: s = "Was it a car or a cat I saw?"
 Output: true
 '''
 def isPalindrome(self, s: str) -> bool:
-        res = "".join(char.lower() for char in s if char.isalnum())
-        l,r = 0,len(res)-1
-        while l<r:
-            if res[l] != res[r]:
-                return False
-            l += 1
-            r -= 1
-        return True
+    res = "".join(char.lower() for char in s if char.isalnum())
+    l,r = 0,len(res)-1
+    while l<r:
+        if res[l] != res[r]:
+            return False
+        l += 1
+        r -= 1
+    return True
